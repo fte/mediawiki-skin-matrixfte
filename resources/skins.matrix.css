@@ -1402,6 +1402,59 @@ body::before {
 }
 
 /* --------------------------------------------------------------------------
+   Pages spéciales : BotPasswords
+   --------------------------------------------------------------------------
+   MediaWiki injecte des fonds blancs/clairs sur certaines lignes du tableau
+   des droits (grant rows). On les réécrit pour rester lisibles dans le thème.
+   -------------------------------------------------------------------------- */
+
+/* Lignes de droits (grant rows) – fond clair injecté par MediaWiki */
+.mw-botpasswords-grantrow,
+#content .mw-botpasswords-grantrow,
+#content table tr.mw-botpasswords-grantrow,
+#content .mw-htmlform-field-HTMLCheckMatrix tr {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
+
+/* Forcer la couleur du texte dans toutes les cellules de ces lignes */
+.mw-botpasswords-grantrow td,
+#content .mw-botpasswords-grantrow td,
+#content .mw-htmlform-field-HTMLCheckMatrix tr td,
+#content .mw-htmlform-field-HTMLCheckMatrix tr th {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+	border-color: rgba(0, 255, 65, 0.18) !important;
+}
+
+/* Lignes alternées dans le tableau des droits */
+.mw-botpasswords-grantrow:nth-child(even),
+#content .mw-htmlform-field-HTMLCheckMatrix tr:nth-child(even) {
+	background: rgba(0, 255, 65, 0.025) !important;
+}
+
+/* Liens dans le tableau des droits (restent verts) */
+.mw-botpasswords-grantrow a,
+#content .mw-htmlform-field-HTMLCheckMatrix a {
+	color: var(--mx-green) !important;
+}
+
+/* Correction générique : toute cellule de tableau héritant d'un fond clair
+   (blanc ou quasi-blanc) doit avoir du texte sombre pour rester lisible.
+   Cible les <td> et <tr> avec style="background: #fff" ou similaire injectés
+   par MediaWiki dans n'importe quelle page spéciale. */
+#content table td[style*='background: #fff'],
+#content table td[style*='background:#fff'],
+#content table td[style*='background: white'],
+#content table tr[style*='background: #fff'],
+#content table tr[style*='background:#fff'],
+#content table tr[style*='background: white'],
+#content table td[style*='background: #f'],
+#content table tr[style*='background: #f'] {
+	color: #111 !important;
+}
+
+/* --------------------------------------------------------------------------
    Pied de page
    -------------------------------------------------------------------------- */
 
