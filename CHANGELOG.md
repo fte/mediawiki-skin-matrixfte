@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 — 2026-11-07
+
+- Renommage du dépôt GitHub en `mediawiki-skin-matrixfte`.
+- Mise à jour des URL du dépôt dans `README.md` et `skin.json`.
+- Documentation des conventions MediaWiki et de l'installation dans
+  `skins/Matrix`.
+- Aucun changement fonctionnel du skin.
+
 ## 0.1.0 — 2026-11-07
 
 - Version initiale du skin Matrix.
