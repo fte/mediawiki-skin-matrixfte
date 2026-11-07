@@ -1,0 +1,83 @@
+<div id="matrix-rain" aria-hidden="true">
+	<canvas id="matrix-canvas"></canvas>
+</div>
+<div id="mw-wrapper">
+	<header id="mw-header" class="matrix-header">
+		<div id="p-logo" class="matrix-brand" role="banner">
+			<a href="{{link-mainpage}}" class="matrix-logo" aria-label="{{msg-sitetitle}}">
+				{{#data-logos}}
+					{{#icon}}<img class="matrix-logo-img" src="{{.}}" width="48" height="48" alt="">{{/icon}}
+				{{/data-logos}}
+				<span class="matrix-logo-text" data-text="{{msg-sitetitle}}">{{msg-sitetitle}}</span>
+			</a>
+			<div class="matrix-tagline"><span class="matrix-prompt">&gt;_</span> {{msg-matrix-tagline}}<span class="matrix-cursor" aria-hidden="true">█</span></div>
+		</div>
+		<div class="matrix-search" id="p-search">
+			{{#data-search-box}}
+			<form action="{{form-action}}" role="search" id="searchform">
+				<input type="hidden" name="title" value="{{page-title}}">
+				<label for="searchInput" class="screen-reader-text">{{msg-search}}</label>
+				{{{html-input}}}
+				{{{html-button-search}}}
+				{{{html-button-search-fallback}}}
+			</form>
+			{{/data-search-box}}
+		</div>
+		<div class="matrix-header-right">
+			<div class="matrix-clock" id="matrix-clock" aria-hidden="true">--:--:--</div>
+			<div id="user-tools" class="matrix-user-tools">
+				{{#data-portlets}}
+					{{#data-user-page}}{{>DropdownPortlet}}{{/data-user-page}}
+					{{#data-notifications}}{{>DropdownPortlet}}{{/data-notifications}}
+					{{#data-user-interface-preferences}}{{>DropdownPortlet}}{{/data-user-interface-preferences}}
+					{{#data-user-menu}}{{>DropdownPortlet}}{{/data-user-menu}}
+				{{/data-portlets}}
+			</div>
+		</div>
+	</header>
+
+	<nav id="mw-navigation" class="matrix-sidebar" aria-label="{{msg-navigation-heading}}">
+		<input type="checkbox" id="matrix-sidebar-toggle" class="matrix-sidebar-toggle">
+		<label for="matrix-sidebar-toggle" class="matrix-sidebar-label"><span aria-hidden="true">☰</span> {{msg-navigation-heading}}</label>
+		<div class="matrix-sidebar-content">
+			<div class="matrix-status"><span class="matrix-status-dot" aria-hidden="true"></span> SYSTEM ONLINE <span class="matrix-status-meta">// NODE 01</span></div>
+			<div id="site-navigation">
+				{{#data-portlets-sidebar.data-portlets-first}}{{>SidebarPortlet}}{{/data-portlets-sidebar.data-portlets-first}}
+				{{#data-portlets-sidebar.array-portlets-rest}}{{>SidebarPortlet}}{{/data-portlets-sidebar.array-portlets-rest}}
+				{{#data-portlets.data-languages}}{{>SidebarPortlet}}{{/data-portlets.data-languages}}
+			</div>
+			<div class="matrix-sidebar-quote" aria-hidden="true">
+				<span>FOLLOW THE WHITE RABBIT</span>
+			</div>
+		</div>
+	</nav>
+
+	<main class="mw-body" id="content" role="main">
+		<div id="siteNotice">{{{html-site-notice}}}</div>
+		{{{html-user-message}}}
+		<div class="mw-indicators mw-body-content">
+			{{#array-indicators}}<div id="{{id}}" class="{{class}}">{{{html}}}</div>{{/array-indicators}}
+		</div>
+
+		<div id="page-tools" class="matrix-page-tools">
+			{{#data-portlets}}
+				{{#data-associated-pages}}{{>ToolbarPortlet}}{{/data-associated-pages}}
+				{{#data-variants}}{{>ToolbarPortlet}}{{/data-variants}}
+				{{#data-views}}{{>ToolbarPortlet}}{{/data-views}}
+				{{#data-actions}}{{>ToolbarPortlet}}{{/data-actions}}
+			{{/data-portlets}}
+		</div>
+
+		{{{html-title-heading}}}
+		{{#is-article}}<div id="siteSub">{{msg-tagline}}</div>{{/is-article}}
+		<div class="mw-body-content">
+			<div id="contentSub">{{{html-subtitle}}}{{{html-undelete-link}}}</div>
+			{{{html-body-content}}}
+			{{{html-categories}}}
+			<div class="visualClear"></div>
+		</div>
+		{{{html-after-content}}}
+	</main>
+
+	{{#data-footer}}{{>Footer}}{{/data-footer}}
+</div>

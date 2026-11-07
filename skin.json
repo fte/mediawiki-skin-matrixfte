@@ -1,0 +1,90 @@
+{
+	"name": "Matrix",
+	"version": "0.1.0",
+	"author": [
+		"Bricosoft"
+	],
+	"url": "https://github.com/fte/mediawiki-skin-matrix",
+	"descriptionmsg": "matrix-skin-desc",
+	"namemsg": "skinname-matrix",
+	"license-name": "GPL-2.0-or-later",
+	"type": "skin",
+	"requires": {
+		"MediaWiki": ">= 1.46"
+	},
+	"ValidSkinNames": {
+		"matrix": {
+			"class": "SkinMustache",
+			"args": [
+				{
+					"name": "matrix",
+					"responsive": true,
+					"menus": [
+						"user-page",
+						"notifications",
+						"associated-pages",
+						"variants",
+						"views",
+						"actions",
+						"user-interface-preferences",
+						"languages"
+					],
+					"messages": [
+						"matrix-no-categories",
+						"matrix-tagline",
+						"matrix-footer-quote",
+						"sitetitle",
+						"search",
+						"otherlanguages",
+						"tagline",
+						"navigation-heading",
+						"associated-pages",
+						"user-page",
+						"notifications",
+						"user-interface-preferences"
+					],
+					"styles": [
+						"skins.matrix.styles"
+					],
+					"scripts": [
+						"skins.matrix"
+					]
+				}
+			]
+		}
+	},
+	"MessagesDirs": {
+		"Matrix": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.matrix.styles": {
+			"class": "MediaWiki\\ResourceLoader\\SkinModule",
+			"features": {
+				"normalize": true,
+				"elements": true,
+				"content-tables": true,
+				"content-links": true,
+				"content-media": true,
+				"content-links-external": true,
+				"interface-category": true,
+				"toc": true
+			},
+			"styles": [
+				"resources/fonts.css",
+				"resources/skins.matrix.css"
+			]
+		},
+		"skins.matrix": {
+			"scripts": [
+				"resources/skins.matrix.js"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "Matrix"
+	},
+	"manifest_version": 2
+}

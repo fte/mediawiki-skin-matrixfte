@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bricosoft"
+		]
+	},
+	"skinname-matrix": "{{name}}",
+	"matrix-skin-desc": "{{desc|what=skin|name=Matrix}}",
+	"matrix-no-categories": "Message shown when a page has no categories.",
+	"matrix-tagline": "Short cyberpunk tagline shown under the site title.",
+	"matrix-footer-quote": "Decorative quote shown in the footer.",
+	"associated-pages": "Label of the associated-pages menu (article/talk tabs).",
+	"user-page": "Label of the user account menu.",
+	"notifications": "Label of the notifications menu.",
+	"user-interface-preferences": "Label of the user preferences menu."
+}
