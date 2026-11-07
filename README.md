@@ -47,6 +47,22 @@ formulaires et pages spéciales.
 - Navigateurs modernes : Chrome, Firefox et Safari récents. Le masquage des
   portlets vides utilise `:has()` avec un repli JavaScript.
 
+## Conventions MediaWiki
+
+Le skin suit le manuel
+[« How to make a MediaWiki skin »](https://www.mediawiki.org/wiki/Manual:How_to_make_a_MediaWiki_skin) :
+
+- dossier d'installation nommé `Matrix`, chargé avec `wfLoadSkin( 'Matrix' )` ;
+- `skin.json` avec `ValidSkinNames`, `SkinMustache`, `responsive: true` et les
+  messages i18n ;
+- un seul module de style `SkinModule` (`skins.matrix.styles`) ;
+- templates Mustache et partiels dans `templates/`.
+
+Le nom du dépôt GitHub est libre et n'a pas besoin d'être identique au nom du
+skin. Les dépôts Wikimedia utilisent souvent `mediawiki-skins-<Nom>` ; ici, le
+dépôt s'appelle `mediawiki-skin-matrixfte`, mais il doit être cloné dans
+`skins/Matrix` pour que `wfLoadSkin( 'Matrix' )` fonctionne.
+
 ## Installation
 
 ### 1. Copier le skin
@@ -54,7 +70,7 @@ formulaires et pages spéciales.
 Depuis le dossier `skins/` de votre installation MediaWiki :
 
 ```sh
-git clone https://github.com/fte/mediawiki-skin-matrix.git Matrix
+git clone https://github.com/fte/mediawiki-skin-matrixfte.git Matrix
 ```
 
 Ou copiez simplement le dossier `Matrix` dans `skins/Matrix`.
