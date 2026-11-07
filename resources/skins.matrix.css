@@ -1401,14 +1401,85 @@ body::before {
 	color: #001b06 !important;
 }
 
-/* --------------------------------------------------------------------------
-   Pages spéciales : BotPasswords
+/* ==========================================================================
+   CORRECTIONS DE LISIBILITÉ — fonds clairs injectés par MediaWiki / OOUI / Codex
    --------------------------------------------------------------------------
-   MediaWiki injecte des fonds blancs/clairs sur certaines lignes du tableau
-   des droits (grant rows). On les réécrit pour rester lisibles dans le thème.
+   Le skin impose un texte vert clair sur fond sombre. Partout où MediaWiki,
+   OOUI ou Codex injecte un fond blanc/clair (via classes CSS ou styles inline),
+   on réécrit fond + couleur pour rester dans le thème.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Lignes alternées des tableaux MediaWiki core
+      (Special:Log, Contributions, BlockList, AllPages, UserList, etc.)
+      MW core injecte tr.odd / tr.even dans mediawiki.legacy.shared.css
    -------------------------------------------------------------------------- */
 
-/* Lignes de droits (grant rows) – fond clair injecté par MediaWiki */
+#content tr.odd,
+#content tr.even,
+#content table tr.odd,
+#content table tr.even {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
+
+#content tr.even,
+#content table tr.even {
+	background: rgba(0, 255, 65, 0.025) !important;
+}
+
+#content tr.odd td,
+#content tr.even td,
+#content tr.odd th,
+#content tr.even th {
+	color: var(--mx-text) !important;
+	border-color: rgba(0, 255, 65, 0.18) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Tableaux paginés (TablePager) et mw-datatable
+      (Special:Contributions, BlockList, ProtectedPages, FileDuplicateSearch…)
+   -------------------------------------------------------------------------- */
+
+#content .mw-datatable,
+#content table.mw-datatable,
+#content .TablePager,
+#content table.TablePager {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+#content .mw-datatable td,
+#content .mw-datatable th,
+#content .TablePager td,
+#content .TablePager th {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+	border-color: rgba(0, 255, 65, 0.18) !important;
+}
+
+#content .mw-datatable th,
+#content .TablePager th,
+#content .TablePager_header th {
+	background: rgba(0, 255, 65, 0.12) !important;
+	color: var(--mx-green) !important;
+}
+
+#content .mw-datatable tr:nth-child(even) td,
+#content .TablePager tr:nth-child(even) td {
+	background: rgba(0, 255, 65, 0.025) !important;
+}
+
+#content .mw-datatable tr:hover td,
+#content .TablePager tr:hover td {
+	background: rgba(0, 255, 65, 0.06) !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. BotPasswords — HTMLCheckMatrix (droits / grants)
+   -------------------------------------------------------------------------- */
+
 .mw-botpasswords-grantrow,
 #content .mw-botpasswords-grantrow,
 #content table tr.mw-botpasswords-grantrow,
@@ -1417,7 +1488,6 @@ body::before {
 	color: var(--mx-text) !important;
 }
 
-/* Forcer la couleur du texte dans toutes les cellules de ces lignes */
 .mw-botpasswords-grantrow td,
 #content .mw-botpasswords-grantrow td,
 #content .mw-htmlform-field-HTMLCheckMatrix tr td,
@@ -1427,31 +1497,445 @@ body::before {
 	border-color: rgba(0, 255, 65, 0.18) !important;
 }
 
-/* Lignes alternées dans le tableau des droits */
 .mw-botpasswords-grantrow:nth-child(even),
 #content .mw-htmlform-field-HTMLCheckMatrix tr:nth-child(even) {
 	background: rgba(0, 255, 65, 0.025) !important;
 }
 
-/* Liens dans le tableau des droits (restent verts) */
 .mw-botpasswords-grantrow a,
 #content .mw-htmlform-field-HTMLCheckMatrix a {
 	color: var(--mx-green) !important;
 }
 
-/* Correction générique : toute cellule de tableau héritant d'un fond clair
-   (blanc ou quasi-blanc) doit avoir du texte sombre pour rester lisible.
-   Cible les <td> et <tr> avec style="background: #fff" ou similaire injectés
-   par MediaWiki dans n'importe quelle page spéciale. */
-#content table td[style*='background: #fff'],
-#content table td[style*='background:#fff'],
-#content table td[style*='background: white'],
-#content table tr[style*='background: #fff'],
-#content table tr[style*='background:#fff'],
-#content table tr[style*='background: white'],
-#content table td[style*='background: #f'],
-#content table tr[style*='background: #f'] {
-	color: #111 !important;
+/* --------------------------------------------------------------------------
+   4. OOUI — panneaux, menus, popups, onglets, dialogs, toolbar
+   -------------------------------------------------------------------------- */
+
+/* Panneaux et layouts */
+.oo-ui-panelLayout,
+.oo-ui-tabPanelLayout,
+.oo-ui-stackLayout,
+.oo-ui-indexLayout,
+.oo-ui-bookletLayout,
+.oo-ui-fieldsetLayout {
+	background: rgba(0, 10, 4, 0.85) !important;
+	color: var(--mx-text) !important;
+}
+
+/* En-têtes de fieldset et labels */
+.oo-ui-fieldsetLayout-header,
+.oo-ui-fieldLayout-header,
+.oo-ui-labelWidget,
+.oo-ui-fieldLayout .oo-ui-labelElement-label,
+.oo-ui-fieldLayout-body .oo-ui-fieldLayout-header,
+.oo-ui-fieldLayout-messages {
+	color: var(--mx-text) !important;
+}
+
+/* Légendes / notices inline */
+.oo-ui-fieldLayout-help {
+	color: var(--mx-text-dim) !important;
+}
+
+/* Menus déroulants OOUI */
+.oo-ui-menuSelectWidget,
+.oo-ui-dropdownWidget-menu,
+.oo-ui-comboBoxInputWidget-menu {
+	background: var(--mx-panel-strong) !important;
+	border-color: var(--mx-green-line-strong) !important;
+	color: var(--mx-text) !important;
+	box-shadow: 0 0 24px rgba(0, 255, 65, 0.15), 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.oo-ui-optionWidget {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+}
+
+.oo-ui-optionWidget.oo-ui-optionWidget-highlighted,
+.oo-ui-optionWidget:hover {
+	background: var(--mx-green-soft) !important;
+	color: var(--mx-green) !important;
+}
+
+.oo-ui-optionWidget.oo-ui-optionWidget-selected {
+	background: rgba(0, 255, 65, 0.18) !important;
+	color: var(--mx-green) !important;
+}
+
+/* Popups (tooltips, bulles d'aide) */
+.oo-ui-popupWidget-popup {
+	background: var(--mx-panel-strong) !important;
+	border-color: var(--mx-green-line-strong) !important;
+	color: var(--mx-text) !important;
+	box-shadow: 0 0 24px rgba(0, 255, 65, 0.15), 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+.oo-ui-popupWidget-anchor::before,
+.oo-ui-popupWidget-anchor::after {
+	border-bottom-color: var(--mx-green-line-strong) !important;
+}
+
+.oo-ui-popupWidget-popup .oo-ui-labelElement-label,
+.oo-ui-popupWidget-popup p {
+	color: var(--mx-text) !important;
+}
+
+/* Onglets OOUI */
+.oo-ui-tabSelectWidget {
+	background: transparent !important;
+	border-bottom-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-tabOptionWidget {
+	background: rgba(0, 10, 4, 0.6) !important;
+	color: var(--mx-text-dim) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-tabOptionWidget.oo-ui-optionWidget-selected {
+	background: rgba(0, 255, 65, 0.12) !important;
+	color: var(--mx-green) !important;
+	border-bottom-color: var(--mx-green) !important;
+}
+
+.oo-ui-tabOptionWidget:hover {
+	background: var(--mx-green-soft) !important;
+	color: var(--mx-text-bright) !important;
+}
+
+/* Dialogs / fenêtres modales OOUI */
+.oo-ui-dialog,
+.oo-ui-window-frame,
+.oo-ui-messageDialog,
+.oo-ui-processDialog {
+	background: var(--mx-panel-strong) !important;
+	color: var(--mx-text) !important;
+}
+
+.oo-ui-window-head,
+.oo-ui-processDialog-location,
+.oo-ui-dialog-content {
+	background: rgba(0, 14, 5, 0.95) !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-window-foot {
+	background: rgba(0, 8, 3, 0.98) !important;
+	border-top-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-messageDialog-text,
+.oo-ui-messageDialog-title,
+.oo-ui-processDialog-title {
+	color: var(--mx-text-bright) !important;
+}
+
+.oo-ui-messageDialog-message {
+	color: var(--mx-text) !important;
+}
+
+/* Barre d'outils OOUI (WikiEditor) */
+.oo-ui-toolbar,
+.oo-ui-toolbar-bar {
+	background: rgba(0, 14, 5, 0.92) !important;
+	border-color: var(--mx-green-line) !important;
+	color: var(--mx-text) !important;
+}
+
+.oo-ui-toolGroup,
+.oo-ui-barToolGroup,
+.oo-ui-listToolGroup,
+.oo-ui-menuToolGroup {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-tool-link {
+	color: var(--mx-text) !important;
+}
+
+.oo-ui-tool-link:hover,
+.oo-ui-tool.oo-ui-widget-enabled:hover > .oo-ui-tool-link {
+	background: var(--mx-green-soft) !important;
+	color: var(--mx-green) !important;
+}
+
+.oo-ui-tool.oo-ui-tool-active > .oo-ui-tool-link {
+	background: rgba(0, 255, 65, 0.18) !important;
+	color: var(--mx-green) !important;
+}
+
+.oo-ui-popupToolGroup-handle {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-popupToolGroup-handle:hover {
+	background: var(--mx-green-soft) !important;
+	color: var(--mx-green) !important;
+}
+
+/* Barre d'outils popup (menu déroulant de toolbar) */
+.oo-ui-popupToolGroup-tools {
+	background: var(--mx-panel-strong) !important;
+	border-color: var(--mx-green-line-strong) !important;
+}
+
+/* Checkbox / radio multiples OOUI */
+.oo-ui-checkboxMultioptionWidget,
+.oo-ui-radioOptionWidget {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+}
+
+.oo-ui-checkboxMultioptionWidget:hover,
+.oo-ui-radioOptionWidget:hover {
+	background: var(--mx-green-soft) !important;
+}
+
+/* Barre de progression OOUI */
+.oo-ui-progressBarWidget {
+	background: rgba(0, 20, 8, 0.6) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.oo-ui-progressBarWidget-bar {
+	background: var(--mx-green-dim) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Codex — menus, messages, dialogs, tables, tabs, cards, chips
+   -------------------------------------------------------------------------- */
+
+/* Menus Codex (TypeaheadSearch dropdown, etc.) */
+.cdx-menu,
+.cdx-menu__listbox {
+	background: var(--mx-panel-strong) !important;
+	border-color: var(--mx-green-line-strong) !important;
+	color: var(--mx-text) !important;
+	box-shadow: 0 0 24px rgba(0, 255, 65, 0.15), 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+.cdx-menu-item {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+}
+
+.cdx-menu-item--active,
+.cdx-menu-item--highlighted,
+.cdx-menu-item:hover {
+	background: var(--mx-green-soft) !important;
+	color: var(--mx-green) !important;
+}
+
+.cdx-menu-item--selected {
+	background: rgba(0, 255, 65, 0.18) !important;
+	color: var(--mx-green) !important;
+}
+
+.cdx-menu-item__text,
+.cdx-menu-item__text__label,
+.cdx-menu-item__text__description {
+	color: inherit !important;
+}
+
+/* Pied du menu TypeaheadSearch */
+.cdx-typeahead-search__search-footer,
+.cdx-typeahead-search__search-footer a {
+	background: rgba(0, 8, 3, 0.9) !important;
+	color: var(--mx-text-dim) !important;
+	border-top-color: var(--mx-green-line) !important;
+}
+
+.cdx-typeahead-search__search-footer a:hover {
+	background: var(--mx-green-soft) !important;
+	color: var(--mx-green) !important;
+}
+
+/* Labels / checkboxes / radios Codex */
+.cdx-label,
+.cdx-label__label,
+.cdx-checkbox__label,
+.cdx-radio__label,
+.cdx-toggle-switch__label {
+	color: var(--mx-text) !important;
+}
+
+.cdx-label__description,
+.cdx-checkbox__label .cdx-checkbox__description,
+.cdx-radio__label .cdx-radio__description {
+	color: var(--mx-text-dim) !important;
+}
+
+/* Messages Codex (notice / warning / error / success) */
+.cdx-message {
+	color: var(--mx-text) !important;
+}
+
+.cdx-message--notice {
+	background: rgba(0, 20, 50, 0.75) !important;
+	border-color: rgba(0, 229, 255, 0.5) !important;
+}
+
+.cdx-message--warning {
+	background: rgba(40, 25, 0, 0.82) !important;
+	border-color: rgba(255, 180, 0, 0.5) !important;
+}
+
+.cdx-message--error {
+	background: rgba(40, 0, 10, 0.82) !important;
+	border-color: rgba(255, 42, 109, 0.5) !important;
+}
+
+.cdx-message--success {
+	background: rgba(0, 30, 10, 0.82) !important;
+	border-color: rgba(0, 255, 65, 0.5) !important;
+}
+
+.cdx-message__icon {
+	color: inherit !important;
+}
+
+/* Tables Codex */
+.cdx-table,
+.cdx-table__table {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.cdx-table__table th,
+.cdx-table__header {
+	background: rgba(0, 255, 65, 0.12) !important;
+	color: var(--mx-green) !important;
+	border-color: rgba(0, 255, 65, 0.22) !important;
+}
+
+.cdx-table__table td {
+	background: transparent !important;
+	color: var(--mx-text) !important;
+	border-color: rgba(0, 255, 65, 0.18) !important;
+}
+
+.cdx-table__table tr:nth-child(even) td {
+	background: rgba(0, 255, 65, 0.025) !important;
+}
+
+/* Onglets Codex */
+.cdx-tabs__list {
+	background: transparent !important;
+	border-bottom-color: var(--mx-green-line) !important;
+}
+
+.cdx-tabs__list-item {
+	background: transparent !important;
+	color: var(--mx-text-dim) !important;
+}
+
+.cdx-tabs__list-item--selected,
+.cdx-tabs__list-item[aria-selected='true'] {
+	color: var(--mx-green) !important;
+	border-bottom-color: var(--mx-green) !important;
+}
+
+.cdx-tabs__list-item:hover {
+	color: var(--mx-text-bright) !important;
+	background: var(--mx-green-soft) !important;
+}
+
+/* Cards Codex */
+.cdx-card {
+	background: rgba(0, 14, 5, 0.82) !important;
+	border-color: var(--mx-green-line) !important;
+	color: var(--mx-text) !important;
+}
+
+.cdx-card__text__title {
+	color: var(--mx-text-bright) !important;
+}
+
+.cdx-card__text__description,
+.cdx-card__text__supporting-text {
+	color: var(--mx-text-dim) !important;
+}
+
+/* Chips / info chips Codex */
+.cdx-info-chip,
+.cdx-info-chip__text {
+	background: rgba(0, 20, 8, 0.75) !important;
+	border-color: var(--mx-green-line) !important;
+	color: var(--mx-text) !important;
+}
+
+/* Dialogs Codex */
+.cdx-dialog,
+.cdx-dialog__body,
+.cdx-dialog__header,
+.cdx-dialog__footer {
+	background: var(--mx-panel-strong) !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
+
+.cdx-dialog__header {
+	border-bottom-color: var(--mx-green-line) !important;
+}
+
+.cdx-dialog__footer {
+	border-top-color: var(--mx-green-line) !important;
+}
+
+.cdx-dialog__title {
+	color: var(--mx-text-bright) !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Correction générique — styles inline injectés par MediaWiki / extensions
+      Couvre background, background-color, valeurs hex, rgb, white
+   -------------------------------------------------------------------------- */
+
+/* Fonds blancs / très clairs (hex #f…) */
+#content [style*='background: #f'],
+#content [style*='background:#f'],
+#content [style*='background: white'],
+#content [style*='background:white'],
+#content [style*='background-color: #f'],
+#content [style*='background-color:#f'],
+#content [style*='background-color: white'],
+#content [style*='background-color:white'] {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
+
+/* Fonds gris clairs (hex #e… ou #d…) */
+#content [style*='background: #e'],
+#content [style*='background:#e'],
+#content [style*='background: #d'],
+#content [style*='background:#d'],
+#content [style*='background-color: #e'],
+#content [style*='background-color:#e'],
+#content [style*='background-color: #d'],
+#content [style*='background-color:#d'] {
+	background: rgba(0, 255, 65, 0.06) !important;
+	color: var(--mx-text) !important;
+}
+
+/* Fonds rgb(255,…) ou rgba(255,…) — blanc pur en rgb */
+#content [style*='background: rgb(255'],
+#content [style*='background:rgb(255'],
+#content [style*='background-color: rgb(255'],
+#content [style*='background-color:rgb(255'] {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
+
+/* Les liens dans ces zones restent verts */
+#content [style*='background'] a {
+	color: var(--mx-green) !important;
 }
 
 /* --------------------------------------------------------------------------
