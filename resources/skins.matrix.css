@@ -1962,6 +1962,45 @@ body::before {
 }
 
 /* --------------------------------------------------------------------------
+   Thème global — empêcher tout fond clair de fuite
+   -------------------------------------------------------------------------- */
+
+/* S'assurer que tout le contenu a un fond sombre, même si d'autres styles
+   ou extensions injectent un fond clair. */
+
+html,
+body,
+#mw-wrapper,
+#mw-header,
+#mw-navigation,
+#page-tools,
+#content,
+#content .mw-body-content,
+#content .mw-parser-output,
+.matrix-footer-inner,
+.matrix-footer-rows,
+.matrix-footer-info ul,
+.matrix-footer-places ul,
+.matrix-footer-icons ul,
+.matrix-footer-quote {
+	background: rgba(0, 0, 0, 0.85) !important;
+	color: var(--mx-text) !important;
+}
+
+#content * {
+	background-color: rgba(0, 0, 0, 0.78) !important;
+	color: var(--mx-text) !important;
+}
+
+/* Exception : les images, vidéos, canva, SVGs gardent leur fond transparent. */
+#content img,
+#content video,
+#content canvas,
+#content svg {
+	background: transparent !important;
+}
+
+/* --------------------------------------------------------------------------
    Pied de page
    -------------------------------------------------------------------------- */
 
@@ -2032,8 +2071,7 @@ body::before {
 	color: var(--mx-green);
 	font-family: var(--mx-display);
 	font-size: 0.65rem;
-	letter-spacing: 0.25em;
-	text-align: center;
+	letter-spacing: 0.25em;	text-align: center;
 	text-transform: uppercase;
 	text-shadow: var(--mx-glow);
 }
