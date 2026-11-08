@@ -2479,3 +2479,10 @@ body::before {
 	border-color: var(--mx-green-line) !important;
 	font-size: 0.9rem !important;
 }
+
+.mw-rcfilters-ui-tagItemWidget,
+.oo-ui-tagItemWidget {
+	background: rgba(0, 255, 65, 0.08) !important;
+	color: var(--mx-text-bright) !important;
+	border-color: var(--mx-green-line) !important;
+}
