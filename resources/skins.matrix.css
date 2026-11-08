@@ -2492,3 +2492,11 @@ body::before {
 	background: rgba(0, 10, 4, 0.72) !important;
 	color: var(--mx-text) !important;
 }
+
+#content textarea,
+#content #wpTextbox1 {
+	background: rgba(0, 10, 4, 0.85) !important;
+	color: var(--mx-text) !important;
+	border: 1px solid var(--mx-green-line) !important;
+	font-family: var(--mx-mono, monospace) !important;
+}
