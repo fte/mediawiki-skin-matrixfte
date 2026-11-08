@@ -2473,3 +2473,9 @@ body::before {
 	background: rgba(0, 10, 4, 0.72) !important;
 	color: var(--mx-text) !important;
 }
+
+.oo-ui-tagMultiselectWidget-outlined,
+.mw-rcfilters-ui-filterTagMultiselectWidget {
+	border-color: var(--mx-green-line) !important;
+	font-size: 0.9rem !important;
+}
