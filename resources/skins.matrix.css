@@ -1077,8 +1077,27 @@ body::before {
 
 /* Liste des modifications récentes : les lignes sont des tables, sans fond
    par défaut. Un liseré discret suffit à les séparer. */
-#content .mw-changeslist-line {
-	border-bottom: 1px solid rgba(0, 255, 65, 0.08);
+#content .mw-changeslist,
+#content .mw-changeslist-legend,
+#content .mw-enhanced-rc-nested {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+	border: 1px solid var(--mx-green-line) !important;
+}
+
+#content .mw-changeslist-legend * {
+	color: var(--mx-text) !important;
+}
+
+#content .mw_metadata,
+#content .mw_metadata td,
+#content table.filehistory,
+#content table.filehistory td,
+#content table.filehistory th,
+#content .mw-filepage-resolutioninfo {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
 }
 
 #content .mw-changeslist-line:hover {
@@ -1928,7 +1947,11 @@ body::before {
 #content [style*='background: rgb(255'],
 #content [style*='background:rgb(255'],
 #content [style*='background-color: rgb(255'],
-#content [style*='background-color:rgb(255'] {
+#content [style*='background-color:rgb(255'],
+#content [style*='background: rgba(255'],
+#content [style*='background:rgba(255'],
+#content [style*='background-color: rgba(255'],
+#content [style*='background-color:rgba(255'] {
 	background: rgba(0, 10, 4, 0.72) !important;
 	color: var(--mx-text) !important;
 }
