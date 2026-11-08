@@ -2500,3 +2500,21 @@ body::before {
 	border: 1px solid var(--mx-green-line) !important;
 	font-family: var(--mx-mono, monospace) !important;
 }
+
+#content #editpage-copywarn,
+#content .editpage-copywarn {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+	border: 1px solid var(--mx-green-line) !important;
+}
+
+#content *:not(img):not(video):not(canvas):not(svg) {
+	background-color: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
+#content img,
+#content video,
+#content canvas,
+#content svg {
+	background: transparent !important;
+}
