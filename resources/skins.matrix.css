@@ -2525,3 +2525,9 @@ body::before {
 	background-color: rgba(0, 10, 4, 0.72) !important;
 	color: var(--mx-text) !important;
 }
+
+.editCheckboxes,
+#content .editCheckboxes {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
