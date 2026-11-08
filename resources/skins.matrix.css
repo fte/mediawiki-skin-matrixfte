@@ -2518,3 +2518,10 @@ body::before {
 #content svg {
 	background: transparent !important;
 }
+
+.editOptions,
+#content .editOptions {
+	background: rgba(0, 10, 4, 0.72) !important;
+	background-color: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
