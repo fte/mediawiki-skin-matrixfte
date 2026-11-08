@@ -2452,3 +2452,17 @@ body::before {
 		color: #000;
 	}
 }
+
+#content .filehistory-selected,
+#content .mw-metadata-show-hide-extended td {
+	background: rgba(0, 255, 65, 0.12) !important;
+	color: var(--mx-text-bright) !important;
+}
+
+#content .catlinks,
+#content .printfooter,
+#content .mw-revision {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+	border-color: var(--mx-green-line) !important;
+}
