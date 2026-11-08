@@ -2486,3 +2486,9 @@ body::before {
 	color: var(--mx-text-bright) !important;
 	border-color: var(--mx-green-line) !important;
 }
+
+.oo-ui-tagMultiselectWidget-handle,
+.mw-rcfilters-ui-tagItemWidget-highlight {
+	background: rgba(0, 10, 4, 0.72) !important;
+	color: var(--mx-text) !important;
+}
